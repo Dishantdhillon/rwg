@@ -1,0 +1,11 @@
+mountpoint: '/tmp'
+runs:
+  ls:
+    command: ['ls', '-laRt']
+    image: 'ubuntu:18.04'
+  catcpu:
+    command: ['cat', '/proc/cpuinfo']
+    image: 'debian:latest'
+  catmem:
+    command: ['cat', '/proc/meminfo']
+    image: 'centos:latest'
