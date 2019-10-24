@@ -1,4 +1,4 @@
 # rwg 
-- is a random world genertor 
+- is a random word genertor 
  
 
