@@ -1,27 +1,31 @@
 package html
 
 import (
-	"fmt"
+	"errors"
 	"math/rand"
 )
 
 var (
-	openingtags = []string{"<div>","<h1>","<p>"}
-	closingtags = []string{"</div>","</h1>","</p>"}
-	length = len(openingtags)
+	openingtags = []string{"<div>", "<h1>", "<p>"}
+	closingtags = []string{"</div>", "</h1>", "</p>"}
+	length      = len(openingtags)
+	maxstacklen = 40
 )
-var stack = make([]int,0)
+var stack = make([]int, 0)
 
-func GenerateRandomHTML(depth int) {
+//Generate  genreates html
+func Generate(depth int) (string, error) {
 	str := ""
-	for d := 0; d < depth ;d++{
+	if depth > maxstacklen {
+		return str, errors.New("stack len in 40")
+	}
+	for d := 0; d < depth; d++ {
 		rnd := int(rand.Int31n(int32(length)))
 		str += openingtags[rnd]
-		fmt.Sprintf(str,str+"%d",len(stack))
-		stack = append(stack,rnd)
+		stack = append(stack, rnd)
 	}
-	for d := 0;d < depth ; d++ {
-		str += closingtags[stack[depth -d -1]]
+	for d := 0; d < depth; d++ {
+		str += closingtags[stack[depth-d-1]]
 	}
-	fmt.Printf("%v" , str)
+	return str, nil
 }
