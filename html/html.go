@@ -6,8 +6,8 @@ import (
 )
 
 var (
-	openingtags = []string{"<div>", "<h1>", "<p>"}
-	closingtags = []string{"</div>", "</h1>", "</p>"}
+	openingtags = []string{"<div>", "<h1>", "<p>" , "<pre>"}
+	closingtags = []string{"</div>", "</h1>", "</p>" , "</pre>"}
 	length      = len(openingtags)
 	maxstacklen = 40
 )
